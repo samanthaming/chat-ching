@@ -1,0 +1,16 @@
+<template name="buyerList">
+  {{#if isSeller}}
+  <ul>
+    {{#each buyers}}
+      {{> buyerItem}}
+    {{/each}}
+  </ul>
+  {{/if }}
+</template>
+
+<template name="buyerItem">
+  <li>
+    <button value="{{buyer}}" class="select-buyer">{{buyerName}}</button>
+    <span class="text-muted">unread: {{unread}}</span>
+  </li>
+</template>

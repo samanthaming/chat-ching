@@ -1,0 +1,24 @@
+<template name="messageList">
+  <ul>
+    {{#each messages}}
+      {{> messageItem}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="messageItem">
+  <li>
+    {{creatorName}} <span class="text-muted">{{timestamp}}</span> - {{message}}
+    [<a href="#" class="delete-message">Delete</a>]
+  </li>
+</template>
+
+<template name="addMessage">
+  {{#if buyerNoMonologue}}
+    <form>
+      Enter Message:
+      <input type="text" name="message" placeholder="Message...">
+      <input type="hidden" name="channel" value={{channelId}}>
+    </form>
+  {{/if }}
+</template>

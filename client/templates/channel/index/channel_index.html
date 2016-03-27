@@ -1,0 +1,21 @@
+<template name="channelIndex">
+  <div class="row">
+    <div class="col-sm-4">
+      {{> addChannel}}
+      <br>
+      {{> channelList}}
+    </div>
+    <div class="col-sm-5">
+      <h4>{{$.Session.get 'currentChannelName'}} </h4>
+      <br>
+      {{#if $.Session.get 'currentChannelName'}}
+        {{> addMessage channelId=_id}}
+        <br>
+        {{> messageList}}
+      {{/if}}
+    </div>
+    <div class="col-sm-3">
+      {{> buyerList}}
+    </div>
+  </div>
+</template>

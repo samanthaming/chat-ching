@@ -1,0 +1,27 @@
+<template name="nav">
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+          <span class="sr-only">Toggle Navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#" class="navbar-brand">PPChat</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navigationbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li>{{#linkTo route="home"}}Home{{/linkTo}}</li>
+          {{#if currentUser}}
+            <li>{{#linkTo route="channelIndex"}}Channel{{/linkTo}}</li>
+            <li><a href="#" class="logout">Logout</a></li>
+          {{else}}
+            <li>{{#linkTo route="register"}}Register{{/linkTo}}</li>
+            <li>{{#linkTo route="login"}}Login{{/linkTo}}</li>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+  </nav>
+</template>

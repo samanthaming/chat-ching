@@ -1,0 +1,19 @@
+<template name="channelShow">
+  <div class="row">
+    <div class="col-sm-4">
+      {{> addChannel}}
+      <br>
+      {{> channelList}}
+    </div>
+    <div class="col-sm-5">
+      <h4>{{name}}</h4>
+      <br>
+      {{> addMessage channelId=_id}}
+      <br>
+      {{> messageList}}
+    </div>
+    <div class="col-sm-3">
+      {{> buyerList channelId=_id}}
+    </div>
+  </div>
+</template>

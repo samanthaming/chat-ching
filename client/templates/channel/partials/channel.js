@@ -1,17 +1,3 @@
-Template.addChannel.events({
-  'submit form':function(event) {
-    event.preventDefault();
-
-    var channelName = $('[name="channel-name"]').val();
-
-    if(channelName.length > 0){
-      Meteor.call('addChannel', channelName);
-    }
-
-    $('[name="channel-name"]').val("");
-  }
-});
-
 Template.channelList.helpers({
   channels: function() {
     return Channels.find();
@@ -20,17 +6,23 @@ Template.channelList.helpers({
 
 Template.channelItem.helpers({
   totalUnread: function() {
+    // console.log(this._id);
     return Messages.find({
       channel: this._id,
       recipient: Meteor.userId(),
       read: false
     }).count();
+  },
+  active: function() {
+    if(this._id === Session.get('currentChannel')){
+      return "active";
+    }
   }
 });
 
 Template.channelItem.events({
   'click .select-channel': function(event) {
-    event.preventDefault();
+    // event.preventDefault();
     Session.set('currentChannel', this._id);
     Session.set('currentChannelName', this.name);
     Session.set('currentChannelCreator', this.creator);

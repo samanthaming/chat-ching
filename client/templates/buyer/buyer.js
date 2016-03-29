@@ -17,6 +17,13 @@ Template.buyerItem.events({
     var buyer = $(event.target).val();
     var buyerName = $(event.target).text();
     Session.set('selectBuyer', buyer);
+  },
+  'click .delete-buyer': function(event) {
+    event.preventDefault();
+    var buyer = this.buyer;
+    var currentChannel = Router.current().params._id;
+
+    Meteor.call('deleteBuyer', currentChannel, buyer);
   }
 });
 

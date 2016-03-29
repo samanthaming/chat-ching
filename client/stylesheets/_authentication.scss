@@ -1,0 +1,9 @@
+input[type=text],
+input[type=password],
+input[type=email]{
+
+  &:focus.error + label{
+    color: $input-error-color !important;
+    opacity: 1;
+  }
+}

@@ -1,12 +1,18 @@
 Channels = new Meteor.Collection('channels');
 
 Meteor.methods({
-  addChannel: function(name) {
+  addChannel: function(name, url, image) {
     check(name, String);
+    check(url, String);
+    check(image, String);
 
+    var craigslistId = url.match(/\d/g).join("");
     var currentUser = Meteor.userId();
     var data = {
       name: name,
+      url: url,
+      image: image,
+      craigslist: craigslistId,
       createdAt: new Date(),
       creator: currentUser,
       creatorName: Meteor.user().profile.firstname,
@@ -15,6 +21,10 @@ Meteor.methods({
 
     if(!currentUser){
       throw new Meteor.Error("not-logged-in", "You're not logged in");
+    }
+
+    if(Channels.findOne({craigslist: craigslistId})){
+      throw new Meteor.Error("channel-exist", "This Craigslist Channel already exist");
     }
 
     return Channels.insert(data);
@@ -56,5 +66,18 @@ Meteor.methods({
         }
       }
     });
+  },
+  deleteBuyer: function(channel, buyer) {
+    check(channel, String);
+    check(buyer, String);
+    var currentName = Meteor.userId();
+
+    if (!Channels.findOne(channel)) {
+      throw new Meteor.Error("invalid-channel", "This channel doesn't exist.");
+    }
+
+    return Channels.update({_id: channel}, {
+      $pull: { 'buyers': {buyer: buyer}}}
+    );
   }
 });

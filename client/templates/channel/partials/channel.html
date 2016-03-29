@@ -1,23 +1,18 @@
-<template name="addChannel">
-  <form>
-    Create a channel:
-    <input type="text" name="channel-name" placeholder="Channel name here...">
-  </form>
-</template>
-
 <template name="channelList">
-  <ul>
+  <div class="ui middle aligned selection list channel-list">
     {{#each channels}}
       {{> channelItem}}
     {{/each}}
-  </ul>
+  </div>
 </template>
 
 <template name="channelItem">
-  <li>
-    <a href="{{pathFor route="channelShow"}}" class="select-channel">{{name}}</a>
-    [<a href="#" class="delete-channel text-muted">Delete</a>]
-    <br>
-    Unread: {{totalUnread}}
-  </li>
+  <a class="item select-channel {{active}}" href="{{pathFor route="channelShow"}}">
+    <img class="ui avatar image" src="{{image}}">
+    <div class="content">
+      <div class="header">{{name}}</div>
+    </div>
+  </a>
+
+  <!-- <a href="#" class="delete-channel text-muted">Delete</a> -->
 </template>

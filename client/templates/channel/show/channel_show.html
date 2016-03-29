@@ -1,19 +1,19 @@
 <template name="channelShow">
   <div class="row">
-    <div class="col-sm-4">
-      {{> addChannel}}
-      <br>
+    <div class="col-md-3">
       {{> channelList}}
     </div>
-    <div class="col-sm-5">
-      <h4>{{name}}</h4>
+    <div class="col-md-6">
+      <h4>{{$.Session.get 'currentChannelName'}} </h4>
       <br>
-      {{> addMessage channelId=_id}}
-      <br>
-      {{> messageList}}
+      {{#if $.Session.get 'currentChannelName'}}
+        {{> addMessage channelId=_id}}
+        <br>
+        {{> messageList}}
+      {{/if}}
     </div>
     <div class="col-sm-3">
-      {{> buyerList channelId=_id}}
+      {{> buyerList}}
     </div>
   </div>
 </template>

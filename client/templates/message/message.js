@@ -31,9 +31,14 @@ Template.addMessage.helpers({
 Template.messageList.helpers({
   messages: function() {
     var channel = Session.get('currentChannel');
-    var owner = Channels.findOne(channel).creator;
+    var queryChannel = Channels.findOne(channel);
+    var owner = queryChannel.creator;
     var currentUser = Meteor.userId();
     var recipient = owner === currentUser ? Session.get('selectBuyer') : owner;
+
+    if (!Session.get('selectBuyer')) {
+      Session.set('selectBuyer', queryChannel.buyers[0].buyer);
+    }
     return Messages.find({parties: {$all: [currentUser,recipient]}});
   }
 });

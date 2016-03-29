@@ -10,9 +10,10 @@ Meteor.methods({
       throw new Meteor.Error('invalid-channel', "Invalid Channel");
     }
 
-    if(!Meteor.users.findOne({_id: recipient}) ){
-      throw new Meteor.Error('invalid-recipient', "Invalid Recipient");
-    }
+    // Doesn't work
+    // if(!Meteor.users.findOne({_id: recipient}) ){
+    //   throw new Meteor.Error('invalid-recipient', "Invalid Recipient");
+    // }
 
     var currentUser = Meteor.userId();
     var currentName = Meteor.user().profile.firstname;

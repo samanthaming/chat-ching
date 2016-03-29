@@ -4,6 +4,7 @@ Template.register.events({
   }
 });
 
+
 Template.register.onRendered(function(){
   var validator = $('.register').validate({
     submitHandler: function(event){

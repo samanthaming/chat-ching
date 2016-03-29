@@ -1,5 +1,5 @@
 <template name="nav">
-  <nav class="navbar navbar-inverse" role="navigation">
+  <nav class="navbar" role="navigation">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
@@ -15,6 +15,7 @@
           <li>{{#linkTo route="home"}}Home{{/linkTo}}</li>
           {{#if currentUser}}
             <li>{{#linkTo route="channelIndex"}}Channel{{/linkTo}}</li>
+            <li>{{#linkTo route="channelCreate"}}+ Channel{{/linkTo}}</li>
             <li><a href="#" class="logout">Logout</a></li>
           {{else}}
             <li>{{#linkTo route="register"}}Register{{/linkTo}}</li>

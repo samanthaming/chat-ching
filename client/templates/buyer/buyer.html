@@ -1,17 +1,25 @@
 <template name="buyerList">
   {{#if isSeller}}
-  <ul>
+
+  <div class="ui horizontal divider header">
+    <i class="fa fa-users"></i>
+  </div>
+  <div class="ui middle aligned selection list buyer-list">
     {{#each buyers}}
       {{> buyerItem}}
     {{/each}}
-  </ul>
+  </div>
   {{/if }}
 </template>
 
 <template name="buyerItem">
-  <li>
-    <button value="{{buyer}}" class="select-buyer">{{buyerName}}</button>
-    <span class="text-muted">unread: {{unread}}</span>
-    <a href="#" class="delete-buyer">remove</a>
-  </li>
+  <div class="item buyer-item select-buyer">
+    <div class="right floated content">
+      <div class="delete-buyer"><i class="fa fa-times"></i></div>
+    </div>
+    <img class="ui avatar image" src="/avatar{{avatar}}.png">
+    <div class="content">
+      {{buyerName}}
+    </div>
+  </div>
 </template>

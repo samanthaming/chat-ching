@@ -15,6 +15,8 @@ Template.addMessage.events({
     }
 
     $('[name="message"]').val("");
+
+    $(".message-list").animate({ scrollTop: $(document).height() }, "slow");
   }
 });
 
@@ -38,6 +40,7 @@ Template.messageList.helpers({
 
     if (!Session.get('selectBuyer')) {
       Session.set('selectBuyer', queryChannel.buyers[0].buyer);
+      Session.set('selectBuyerName', queryChannel.buyers[0].buyerName);
     }
     return Messages.find({parties: {$all: [currentUser,recipient]}});
   }
@@ -46,6 +49,11 @@ Template.messageList.helpers({
 Template.messageItem.helpers({
   timestamp: function() {
     return moment(this.createdAt).fromNow();
+  },
+  myMessage: function() {
+    if(this.creator === Meteor.userId()){
+      return "my-message-line";
+    }
   }
 });
 

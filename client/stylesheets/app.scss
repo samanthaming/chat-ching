@@ -6,38 +6,29 @@
 // $success-color: ;
 // $error-color: ;
 // $link-color: ;
+$main-color:#448AFF;
+$button-color: $main-color;
+$input-focus-color: $main-color;
 
-$button-color: #448AFF;
-$input-focus-color: #448AFF;
+$bootstrap-screen-sm:768px;
+$bootstrap-screen-md:992px;
+$bootstrap-screen-lg:1200px;
 
 @import "materialize.scss";
 @import "nav";
 @import "authentication";
 @import "semantic-list";
+@import "semantic-divider";
+@import "layout";
+@import "message";
+@import "channel";
+@import "card";
+@import "buyer";
 
-.selection.list.channel-list{
+.divider{
+  background-color: white;
 
-  .image{
-    width:50px;
-  }
-
-  a:hover,
-  a:focus{
-    text-decoration: none;
-    border-radius: 0px;
-  }
-
-  a.active.select-channel{
-    background-color: #b388ff !important;
-    border-radius: 0px;
-  }
-}
-
-.channel-create{
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active {
-      -webkit-box-shadow: 0 0 0px 1000px white inset;
+  i{
+    color:#d1c4e9;
   }
 }

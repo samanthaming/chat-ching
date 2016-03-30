@@ -17,6 +17,8 @@ Template.buyerItem.events({
     var buyer = $(event.target).val();
     var buyerName = $(event.target).text();
     Session.set('selectBuyer', buyer);
+    Session.set('selectBuyerName', buyerName);
+
   },
   'click .delete-buyer': function(event) {
     event.preventDefault();

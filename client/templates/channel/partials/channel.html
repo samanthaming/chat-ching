@@ -7,12 +7,24 @@
 </template>
 
 <template name="channelItem">
-  <a class="item select-channel {{active}}" href="{{pathFor route="channelShow"}}">
+  <div class="item select-channel {{active}}" href="{{pathFor route="channelShow"}}">
     <img class="ui avatar image" src="{{image}}">
     <div class="content">
       <div class="header">{{name}}</div>
     </div>
-  </a>
+  </div>
 
   <!-- <a href="#" class="delete-channel text-muted">Delete</a> -->
+</template>
+
+<template name="channelCard">
+  <div class="card">
+    <div class="card-title text-center">{{$.Session.get 'currentChannelName'}}</div>
+    <div class="card-image">
+      <img src="{{$.Session.get 'currentChannelImage'}}">
+    </div>
+    <div class="card-content">
+      <p class="truncate"><a href="{{$.Session.get 'currentChannelUrl'}}">{{$.Session.get 'currentChannelUrl'}}</a></p>
+    </div>
+  </div>
 </template>

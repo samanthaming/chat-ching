@@ -25,9 +25,12 @@ Template.channelItem.events({
     // event.preventDefault();
     Session.set('currentChannel', this._id);
     Session.set('currentChannelName', this.name);
+    Session.set('currentChannelUrl', this.url);
+    Session.set('currentChannelImage', this.image);
     Session.set('currentChannelCreator', this.creator);
     Session.set('currentChannelCreatorName', this.creatorName);
     Session.set('selectBuyer', null);
+    Session.set('selectBuyerName', null);
   },
   'click .delete-channel': function(event) {
     event.preventDefault();
@@ -40,4 +43,8 @@ Template.channelItem.events({
       Meteor.call('deleteChannel', channel);
     }
   }
+});
+
+Template.channelCard.helpers({
+
 });

@@ -56,12 +56,14 @@ Meteor.methods({
     }
 
     var currentName = Meteor.user().profile.firstname;
+    var currentAvatar = Meteor.user().profile.avatar;
 
     return Channels.update({_id: channel},{
       $addToSet: {
         buyers: {
           buyer: currentUser,
           buyerName: currentName,
+          avatar: currentAvatar,
           unseen:0,
         }
       }

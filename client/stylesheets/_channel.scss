@@ -1,0 +1,31 @@
+.selection.list.channel-list{
+
+  .image{
+    width:50px;
+    // height:50px;
+  }
+
+  a:hover,
+  a:focus{
+    text-decoration: none;
+    border-radius: 0px;
+  }
+
+  .item.active.select-channel{
+    border-left: 3px solid $main-color;
+    border-radius: 0px;
+  }
+
+  .header{
+    font-weight: normal;
+  }
+}
+
+.channel-create{
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0px 1000px white inset;
+  }
+}

@@ -32,3 +32,10 @@ $bootstrap-screen-lg:1200px;
     color:#d1c4e9;
   }
 }
+
+a{
+  color: $card-link-color;
+  a:hover{
+    color: $card-link-color-light;
+  }
+}

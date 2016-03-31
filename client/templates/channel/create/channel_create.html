@@ -1,36 +1,55 @@
 <template name="channelCreate">
-  <h1 class="page-header">Create Channel</h1>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close cancel-create-channel" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      <div class="modal-body">
 
-  <form class="channel-create">
-    <div class="form-group">
-      <input type="text" class="form-control" name="list-link" placeholder="CraigsList">
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+        <!-- 1. Craigslist Link -->
+        <form class="channel-create form-inline">
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" class="form-control" name="list-link" placeholder="Enter your craigslist url here...">
+              <button type="submit" class="input-group-addon"><i class="fa fa-sign-in"></i></button>
+            </div>
+          </div>
+        </form>
 
-    <button class="btn btn-default cancel-create-channel">Cancel</button>
-  </form>
-  <hr>
+        <!-- Load Craigslist Link -->
+        {{#if craigslist}}
+        <div class="craigslist-result">
+          <div class="craigslist-result-title">{{craigslist.title}}</div>
+          <div class="craigslist-result-url"><a href="{{craigslist.url}}" class="craigslist-url">{{craigslist.url}}</a></div>
+          <div class="craigslist-result-image"><img src="{{craigslist.image}}" alt=""></div>
+        </div>
+        {{/if}}
 
-  {{#if craigslist}}
-    <p>{{craigslist.title}}</p>
-    <p><a href="{{craigslist.url}}" class="craigslist-url">{{craigslist.url}}</a></p>
-    <img src="{{craigslist.image}}" alt="">
-    <br><br>
-    <p><button class="btn btn-default generate-link">Generate Link</button></p>
-  {{/if}}
+        {{#if $.Session.get 'craigslistId' }}
+          <form class="form-inline generated-link-wrap">
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" class="form-control copy-text" value="{{generatedLink}}" readonly="readonly">
+                <button class="input-group-addon copy-link" type="button" data-clipboard-text={{generatedLink}}><i class="fa fa-scissors"></i></button>
+              </div>
+            </div>
+          </form>
 
+        {{else}}
+          <div class="generate-link-wrap">
+            <button class="btn btn-default btn-block generate-link">Generate Link</button>
+          </div>
+        {{/if}}
 
-  {{#if $.Session.get 'craigslistId' }}
-  <hr>
+      </div><!-- end .modal-body -->
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
 
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <input type="text" class="copy-text" value="{{generatedLink}}" readonly="readonly">
-      <button class="btn btn-default copy-link" type="button" data-clipboard-text={{generatedLink}}>Copy</button>
     </div>
   </div>
-  {{/if}}
-
-
-
+</div>
 </template>

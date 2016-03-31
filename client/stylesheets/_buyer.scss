@@ -1,5 +1,29 @@
 .buyer-item{
+
   .image{
     width:32px;
   }
+
+  &.active.item.select-buyer{
+    border-left: 3px solid $main-color;
+    border-radius: 0px;
+  }
+
+  &:hover .delete-buyer{
+    opacity: 1;
+  }
+
+  .delete-buyer{
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+}
+
+.buyer-wrap{
+  height:80vh;
+}
+.buyer-list{
+  overflow: auto;
+  height:49%;
 }

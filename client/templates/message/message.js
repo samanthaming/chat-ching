@@ -6,17 +6,19 @@ Template.addMessage.events({
     var channel = Session.get('currentChannel');
     var owner = Channels.findOne(channel).creator;
 
-    if (owner == Meteor.userId()) {
-      Meteor.call('addMessage', message, channel, Session.get('selectBuyer'));
-    } else {
-
-      Meteor.call('addMessage', message, channel, owner);
-      Meteor.call('addBuyer', channel);
+    if(message.length > 0){
+      if (owner == Meteor.userId()) {
+        Meteor.call('addMessage', message, channel, Session.get('selectBuyer'));
+      } else {
+        Meteor.call('addMessage', message, channel, owner);
+        Meteor.call('addBuyer', channel);
+      }
+      $(".message-list").animate({ scrollTop: $(document).height() }, "slow");
     }
+
 
     $('[name="message"]').val("");
 
-    $(".message-list").animate({ scrollTop: $(document).height() }, "slow");
   }
 });
 

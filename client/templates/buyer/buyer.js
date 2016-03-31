@@ -14,8 +14,8 @@ Template.buyerList.helpers({
 Template.buyerItem.events({
   'click .select-buyer':function(event) {
     event.preventDefault();
-    var buyer = $(event.target).val();
-    var buyerName = $(event.target).text();
+    var buyer = $(event.target).data("buyer");
+    var buyerName = $(event.target).data("buyername");
     Session.set('selectBuyer', buyer);
     Session.set('selectBuyerName', buyerName);
 
@@ -43,5 +43,10 @@ Template.buyerItem.helpers({
     // }).count();
 
 
+  },
+  active: function() {
+    if(this.buyer === Session.get('selectBuyer')){
+      return "active";
+    }
   }
 });

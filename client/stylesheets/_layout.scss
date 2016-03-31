@@ -32,12 +32,24 @@ body{
   align-items: center;
 }
 
+.sm-col-left-title{
+  justify-content: space-between;
+  padding-right: 5px;
+
+  .sm-col-left-icon{
+    font-size:24px;
+    color:#BBDEFB;
+
+    &:hover{
+      color: #64B5F6;
+    }
+  }
+}
 
 .sm-col-middle-title{
   padding:0 20px;
   div{
     font-size: 28px;
-
   }
 }
 
@@ -50,4 +62,5 @@ body{
 .sm-col-middle-right{
   width:40%;
   padding:0 10px;
+
 }

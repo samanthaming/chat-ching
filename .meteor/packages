@@ -31,3 +31,5 @@ reactive-dict
 anonyfox:scrape
 u2622:persistent-session
 zenorocha:clipboard
+reactive-var
+percolate:momentum

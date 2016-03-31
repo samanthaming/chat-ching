@@ -17,3 +17,16 @@ Template.channelIndex.onCreated(function() {
   Session.set('currentChannelCreator', channel.creator);
   Session.set('currentChannelCreatorName', channel.creatorName);
 });
+
+Template.channelIndex.onRendered(function() {
+  console.log("index rendered");
+  var template = this;
+
+  this.autorun(function () {
+    if (template.subscriptionsReady()) {
+      Tracker.afterFlush(function () {
+        $('.message-list').scrollTop($(document).height());
+      });
+    }
+  });
+});

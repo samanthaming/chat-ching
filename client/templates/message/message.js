@@ -57,15 +57,15 @@ Template.messageList.onCreated(function() {
 });
 
 Template.messageList.onRendered(function() {
-  var template = this;
-
-  this.autorun(function () {
-    if (template.subscriptionsReady()) {
-      Tracker.afterFlush(function () {
-        $('.message-list').scrollTop($(document).height());
-      });
-    }
-  });
+  // var template = this;
+  //
+  // this.autorun(function () {
+  //   if (template.subscriptionsReady()) {
+  //     Tracker.afterFlush(function () {
+  //       $('.message-list').scrollTop($(document).height());
+  //     });
+  //   }
+  // });
 });
 /***************************************
  * Message Item

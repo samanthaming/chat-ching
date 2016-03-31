@@ -28,6 +28,8 @@ Template.channelItem.helpers({
 
 Template.channelItem.events({
   'click .select-channel': function() {
+    $('.message-list').scrollTop($(document).height());
+
     Session.set('currentChannel', this._id);
     Session.set('currentChannelName', this.name);
     Session.set('currentChannelUrl', this.url);
@@ -36,6 +38,10 @@ Template.channelItem.events({
     Session.set('currentChannelCreatorName', this.creatorName);
     Session.set('selectBuyer', null);
     Session.set('selectBuyerName', null);
+
+    if(Router.current().params.query.id){
+        Router.go('channelIndex');
+    }
   },
   'click .delete-channel': function(event) {
     event.preventDefault();

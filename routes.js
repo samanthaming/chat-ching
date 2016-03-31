@@ -30,7 +30,20 @@ Router.route('/channels', {
     }
   },
   waitOn:function() {
-    return Meteor.subscribe('channels');
+    var channel = Session.get('currentChannel');
+
+    if(!channel){
+      channel = this.params.query.id;
+    }
+
+    if(channel){
+      return [
+        Meteor.subscribe('channels'),
+        Meteor.subscribe('channelMessages', channel)
+      ];
+    }
+
+    Meteor.subscribe('channels');
   },
   onAfterAction: function() {
 

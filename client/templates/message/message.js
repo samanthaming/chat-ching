@@ -53,9 +53,20 @@ Template.messageList.helpers({
 
 Template.messageList.onCreated(function() {
   var channel = Session.get('currentChannel');
-  this.subscribe('channelMessages', channel);
+  // this.subscribe('channelMessages', channel);
 });
 
+Template.messageList.onRendered(function() {
+  var template = this;
+
+  this.autorun(function () {
+    if (template.subscriptionsReady()) {
+      Tracker.afterFlush(function () {
+        $('.message-list').scrollTop($(document).height());
+      });
+    }
+  });
+});
 /***************************************
  * Message Item
 ****************************************/

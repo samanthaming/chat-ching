@@ -13,3 +13,7 @@ Meteor.publish('messages', function() {
 Meteor.publish('channelMessages', function(channel) {
   return Messages.find({channel: channel});
 });
+
+Meteor.publish('channelBuyerMessages', function(channel, buyer) {
+  // body...
+});

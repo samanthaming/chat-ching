@@ -26,6 +26,8 @@
     <div class="card-image">
       <img src="{{$.Session.get 'currentChannelImage'}}">
     </div>
+
+    {{#if isOwner}}
     <div class="card-content">
       <form class="form-inline">
         <div class="form-group">
@@ -36,6 +38,7 @@
         </div>
       </form>
     </div>
+    {{/if}}
   </div>
   {{/if}}
 </template>

@@ -1,9 +1,15 @@
+/***************************************
+ * Channel List
+****************************************/
 Template.channelList.helpers({
   channels: function() {
     return Channels.find();
   }
 });
 
+/***************************************
+ * Channel Item
+****************************************/
 Template.channelItem.helpers({
   totalUnread: function() {
     // console.log(this._id);
@@ -47,12 +53,21 @@ Template.channelItem.events({
     }
   }
 });
-
+/***************************************
+ * Channel Card
+****************************************/
 Template.channelCard.helpers({
   channelLink: function() {
     var channel = Session.get('currentChannel');
     var domain = Meteor.absoluteUrl();
     return (domain+"channels/"+channel);
+  },
+  isOwner:function() {
+    var channelOwner = Session.get('currentChannelCreator');
+    if( channelOwner === Meteor.userId()){
+      return true;
+    }
+    return false;
   }
 });
 

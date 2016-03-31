@@ -11,3 +11,10 @@ Template.dashboardTitle.helpers({
     return title;
   }
 });
+
+Template.dashboardNav.events({
+  'click .dashboard-signout': function(event) {
+    Meteor.logout();
+    Router.go('login');
+  }
+});

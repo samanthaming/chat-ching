@@ -34,8 +34,10 @@ $bootstrap-screen-lg:1200px;
 }
 
 a{
-  color: $card-link-color;
-  a:hover{
+  &, &:focus{
+    color: $card-link-color;
+  }
+  &:hover{
     color: $card-link-color-light;
   }
 }

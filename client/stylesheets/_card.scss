@@ -1,14 +1,26 @@
 .card{
   height:50%;
+
+  .form-inline{
+    input[type="text"]{
+      background-color: white;
+      height:2rem;
+    }
+    .copy-link{
+      background-color: white;
+    }
+  }
+
 }
 
 .card-title{
   font-size: 24px;
 }
 
+
 .card-image{
   width:300px;
-  height:250px;
+  height:65%;
   margin:0 auto;
   img{
     width:100%;

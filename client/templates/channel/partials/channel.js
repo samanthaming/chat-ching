@@ -49,5 +49,17 @@ Template.channelItem.events({
 });
 
 Template.channelCard.helpers({
+  channelLink: function() {
+    var channel = Session.get('currentChannel');
+    var domain = Meteor.absoluteUrl();
+    return (domain+"channels/"+channel);
+  }
+});
 
+Template.channelCard.events({
+  'click .card-link': function(event) {
+    event.preventDefault();
+    var link = $(event.target).attr("href");
+    window.open(link, '_blank');
+  }
 });

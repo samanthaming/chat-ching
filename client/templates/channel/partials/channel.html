@@ -17,13 +17,25 @@
 </template>
 
 <template name="channelCard">
+  {{#if $.Session.get 'currentChannelName'}}
   <div class="card">
     <div class="card-title text-center">{{$.Session.get 'currentChannelName'}}</div>
+
+    <p class="truncate text-center"><a class="card-link" href="{{$.Session.get 'currentChannelUrl'}}">{{$.Session.get 'currentChannelUrl'}}</a></p>
+
     <div class="card-image">
       <img src="{{$.Session.get 'currentChannelImage'}}">
     </div>
     <div class="card-content">
-      <p class="truncate"><a href="{{$.Session.get 'currentChannelUrl'}}">{{$.Session.get 'currentChannelUrl'}}</a></p>
+      <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control copy-text" value="{{channelLink}}" readonly="readonly">
+            <button class="input-group-addon copy-link" type="button" data-clipboard-text={{channelLink}}><i class="fa fa-scissors"></i></button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
+  {{/if}}
 </template>

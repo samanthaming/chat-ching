@@ -16,6 +16,7 @@ Meteor.methods({
       createdAt: new Date(),
       creator: currentUser,
       creatorName: Meteor.user().profile.firstname,
+      unread: 0,
       buyers: []
     };
 
@@ -64,7 +65,7 @@ Meteor.methods({
           buyer: currentUser,
           buyerName: currentName,
           avatar: currentAvatar,
-          unseen:0,
+          unread:0,
         }
       }
     });

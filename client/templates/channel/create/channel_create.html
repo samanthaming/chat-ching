@@ -25,6 +25,13 @@
           <div class="craigslist-result-url"><a href="{{craigslist.url}}" class="craigslist-url">{{craigslist.url}}</a></div>
           <div class="craigslist-result-image"><img src="{{craigslist.image}}" alt=""></div>
         </div>
+
+          {{#if $.Session.get 'craigslistId' }}
+          {{else}}
+          <div class="generate-link-wrap">
+            <button class="btn btn-default btn-block generate-link">Generate Link</button>
+          </div>
+          {{/if}}
         {{/if}}
 
         {{#if $.Session.get 'craigslistId' }}
@@ -37,17 +44,9 @@
             </div>
           </form>
 
-        {{else}}
-          <div class="generate-link-wrap">
-            <button class="btn btn-default btn-block generate-link">Generate Link</button>
-          </div>
         {{/if}}
 
       </div><!-- end .modal-body -->
-      <!-- <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div> -->
 
     </div>
   </div>

@@ -11,11 +11,12 @@ Template.buyerList.helpers({
   }
 });
 
+
 Template.buyerItem.events({
   'click .select-buyer':function(event) {
     event.preventDefault();
-    var buyer = $(event.target).data("buyer");
-    var buyerName = $(event.target).data("buyername");
+    var buyer = $(event.currentTarget).data("buyer");
+    var buyerName = $(event.currentTarget).data("buyername");
     Session.set('selectBuyer', buyer);
     Session.set('selectBuyerName', buyerName);
 
@@ -23,9 +24,15 @@ Template.buyerItem.events({
   'click .delete-buyer': function(event) {
     event.preventDefault();
     var buyer = this.buyer;
-    var currentChannel = Router.current().params._id;
-
-    Meteor.call('deleteBuyer', currentChannel, buyer);
+    var currentChannel = Session.get('currentChannel');
+    Meteor.call('deleteBuyer', currentChannel, buyer, function(err, data) {
+      if(err){
+        console.log(err.reason);
+      }else{
+        Session.set('selectBuyer', null);
+        Session.set('selectBuyerName', null);
+      }
+    });
   }
 });
 

@@ -60,7 +60,7 @@ Template.channelCard.helpers({
   channelLink: function() {
     var channel = Session.get('currentChannel');
     var domain = Meteor.absoluteUrl();
-    return (domain+"channels/"+channel);
+    return (domain+"channels?id="+channel);
   },
   isOwner:function() {
     var channelOwner = Session.get('currentChannelCreator');

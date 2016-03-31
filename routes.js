@@ -16,13 +16,7 @@ Router.route('/login', {
   layoutTemplate: 'main'
 });
 
-Router.route('/channels/new',{
-  name: 'channelCreate',
-  template: 'channelCreate',
-  layoutTemplate: 'main'
-});
-
-Router.route('/channels',{
+Router.route('/channels', {
   name: 'channelIndex',
   template: 'channelIndex',
   layoutTemplate: 'dashboard',
@@ -41,33 +35,11 @@ Router.route('/channels',{
       Meteor.subscribe('channels'),
       Meteor.subscribe('channelMessages', currentChannel)
     ];
-  }
-});
+  },
+  onAfterAction: function() {
 
-Router.route('/channels/:_id',{
-  name: 'channelShow',
-  template: 'channelShow',
-  layoutTemplate: 'dashboard',
-  // loadingTemplate: 'loading',
-  data: function() {
-    var currentChannel = this.params._id;
-    return Channels.findOne({_id: currentChannel});
   },
-  onBeforeAction: function() {
-    var currentUser = Meteor.userId();
-    if (currentUser) {
-      this.next();
-    } else {
-      this.render('login');
-    }
-  },
-  // subscriptions: function() {
-  waitOn: function() {
-    var currentChannel = this.params._id;
-    return [
-      // Meteor.subscribe('singleChannel', currentChannel),
-      Meteor.subscribe('channels'),
-      Meteor.subscribe('channelMessages', currentChannel)
-    ];
+  action: function() {
+    this.render();
   }
 });

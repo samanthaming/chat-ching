@@ -22,7 +22,10 @@ Template.channelItem.helpers({
 
 Template.channelItem.events({
   'click .select-channel': function(event) {
-    // event.preventDefault();
+    event.preventDefault();
+    // var link = this._id;
+    // window.location.href = link;
+
     Session.set('currentChannel', this._id);
     Session.set('currentChannelName', this.name);
     Session.set('currentChannelUrl', this.url);

@@ -6,14 +6,18 @@ Template.addMessage.events({
     var channel = Session.get('currentChannel');
     var owner = Channels.findOne(channel).creator;
 
+    console.log(channel);
+    console.log(owner);
+
     if(message.length > 0){
-      if (owner == Meteor.userId()) {
-        Meteor.call('addMessage', message, channel, Session.get('selectBuyer'));
-      } else {
-        Meteor.call('addMessage', message, channel, owner);
-        Meteor.call('addBuyer', channel);
-      }
-      $(".message-list").animate({ scrollTop: $(document).height() }, "slow");
+      console.log("yes");
+      // if (owner == Meteor.userId()) {
+      //   Meteor.call('addMessage', message, channel, Session.get('selectBuyer'));
+      // } else {
+      //   Meteor.call('addMessage', message, channel, owner);
+      //   Meteor.call('addBuyer', channel);
+      // }
+      // $(".message-list").animate({ scrollTop: $(document).height() }, "slow");
     }
 
 
@@ -40,7 +44,7 @@ Template.messageList.helpers({
     var currentUser = Meteor.userId();
     var recipient = owner === currentUser ? Session.get('selectBuyer') : owner;
 
-    if (!Session.get('selectBuyer')) {
+    if (!Session.get('selectBuyer') && queryChannel.buyers[0]) {
       Session.set('selectBuyer', queryChannel.buyers[0].buyer);
       Session.set('selectBuyerName', queryChannel.buyers[0].buyerName);
     }

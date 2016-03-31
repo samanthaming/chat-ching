@@ -25,6 +25,7 @@ Router.route('/channels', {
     if (currentUser) {
       this.next();
     } else {
+      this.layout('main');
       this.render('login');
     }
   },

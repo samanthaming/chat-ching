@@ -1,9 +1,13 @@
 <template name="messageList">
-  <ul class="message-list clearfix">
-    {{#each messages}}
-      {{> messageItem}}
-    {{/each}}
-  </ul>
+  {{#if Template.subscriptionsReady}}
+    <ul class="message-list clearfix">
+      {{#each messages}}
+        {{> messageItem}}
+      {{/each}}
+    </ul>
+  {{else}}
+    <h2>Loading...</h2>
+  {{/if}}
 </template>
 
 <template name="messageItem">

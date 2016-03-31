@@ -1,3 +1,6 @@
+/***************************************
+ * Add Message
+****************************************/
 Template.addMessage.events({
   'submit form':function(event) {
     event.preventDefault();
@@ -29,7 +32,9 @@ Template.addMessage.helpers({
     return true;
   }
 });
-
+/***************************************
+ * Message List
+****************************************/
 Template.messageList.helpers({
   messages: function() {
     var channel = Session.get('currentChannel');
@@ -46,6 +51,14 @@ Template.messageList.helpers({
   }
 });
 
+Template.messageList.onCreated(function() {
+  var channel = Session.get('currentChannel');
+  this.subscribe('channelMessages', channel);
+});
+
+/***************************************
+ * Message Item
+****************************************/
 Template.messageItem.helpers({
   timestamp: function() {
     return moment(this.createdAt).fromNow();

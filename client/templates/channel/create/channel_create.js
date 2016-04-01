@@ -1,3 +1,15 @@
+Template.channelCreate.helpers({
+  craigslist: function() {
+    return Session.get('craigslist');
+  },
+  generatedLink: function() {
+    var link = Meteor.absoluteUrl();
+    link += "channels/123";
+    link += Session.get('craigslistId');
+    return link;
+  }
+});
+
 Template.channelCreate.events({
   'submit .channel-create': function(event) {
     event.preventDefault();
@@ -29,31 +41,24 @@ Template.channelCreate.events({
 
     Meteor.call('addChannel', name, url, image, function(error, result) {
       Session.setPersistent('craigslistId', result);
-      console.log(error.reason);
+      alert(error.reason);
     });
   },
   'click .copy-link':function(event) {
     event.preventDefault();
-
   },
   'click .copy-text':function(event) {
     $(event.target).select();
   }
 });
 
-Template.channelCreate.helpers({
-  craigslist: function() {
-    return Session.get('craigslist');
-  },
-  generatedLink: function() {
-    var link = Meteor.absoluteUrl();
-    link += "channels/123";
-    link += Session.get('craigslistId');
-    return link;
-  }
-});
-
 Template.channelCreate.onRendered(function() {
+  var clipboard = new Clipboard('.copy-link');
+
+  clipboard.on('success', function() {
+    $('.copy-text').select();
+  });
+
   $('.channel-create').validate({
     rules: {
       'list-link':{
@@ -65,14 +70,7 @@ Template.channelCreate.onRendered(function() {
 
     }
   });
-});
 
-Template.channelCreate.onRendered(function() {
-  var clipboard = new Clipboard('.copy-link');
-
-  clipboard.on('success', function() {
-    $('.copy-text').select();
-  });
 });
 
 Template.channelCreate.onDestroyed(function() {

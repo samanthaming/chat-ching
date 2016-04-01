@@ -19,13 +19,13 @@ Template.channelIndex.onCreated(function() {
 });
 
 Template.channelIndex.onRendered(function() {
-  console.log("index rendered");
+  var height = $('.message-list')[0].scrollHeight;
   var template = this;
 
   this.autorun(function () {
     if (template.subscriptionsReady()) {
       Tracker.afterFlush(function () {
-        $('.message-list').scrollTop($(document).height());
+        $('.message-list').scrollTop(height);
       });
     }
   });

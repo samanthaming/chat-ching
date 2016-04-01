@@ -1,3 +1,6 @@
+/***************************************
+ * Buyer List
+****************************************/
 Template.buyerList.helpers({
   buyers: function() {
     var currentChannel = Session.get('currentChannel');
@@ -11,6 +14,30 @@ Template.buyerList.helpers({
   }
 });
 
+/***************************************
+ * Buyer Item
+****************************************/
+Template.buyerItem.helpers({
+  unread: function() {
+
+    Channels.find({
+      _id: Session.get('currentChannel')
+
+    });
+
+    // return Messages.find({
+    //   recipient: Meteor.userId(),
+    //   creator: this.buyer
+    // }).count();
+
+
+  },
+  active: function() {
+    if(this.buyer === Session.get('selectBuyer')){
+      return "active";
+    }
+  }
+});
 
 Template.buyerItem.events({
   'click .select-buyer':function(event) {
@@ -33,27 +60,5 @@ Template.buyerItem.events({
         Session.set('selectBuyerName', null);
       }
     });
-  }
-});
-
-Template.buyerItem.helpers({
-  unread: function() {
-
-    Channels.find({
-      _id: Session.get('currentChannel')
-
-    });
-
-    // return Messages.find({
-    //   recipient: Meteor.userId(),
-    //   creator: this.buyer
-    // }).count();
-
-
-  },
-  active: function() {
-    if(this.buyer === Session.get('selectBuyer')){
-      return "active";
-    }
   }
 });

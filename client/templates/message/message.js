@@ -41,20 +41,9 @@ Template.messageList.onCreated(function() {
 });
 
 Template.messageList.onRendered(function() {
-  console.log("rendere message list");
   var height = $('.message-list')[0].scrollHeight;
   var numMessage = $('.message-list .message-line').length;
   var template = this;
-  // $('.message-list').scrollTop($('.message-list')[0].scrollHeight);
-
-
-  this.autorun(function () {
-    if (template.subscriptionsReady()) {
-      Tracker.afterFlush(function () {
-        $('.message-list').scrollTop(4220);
-      });
-    }
-  });
 
   template.state.set('numMessage', numMessage);
 
@@ -75,14 +64,15 @@ Template.messageList.onRendered(function() {
         (messageList.prop('scrollHeight') > messageList.height())
       ){
         lastChild.before(divider).fadeIn();
-
       }
     }
   },1000);
 });
+
 Template.messageList.onDestroyed(function() {
   clearInterval(this.run_every_sec);
 });
+
 Template.messageList.helpers({
   messages: function() {
     var channel = Session.get('currentChannel');
@@ -98,6 +88,7 @@ Template.messageList.helpers({
     return Messages.find({parties: {$all: [currentUser,recipient]}});
   }
 });
+
 Template.messageList.events({
   'click .counter': function(event, template) {
     template.state.set('counter', template.state.get('counter') + 1);
@@ -107,7 +98,7 @@ Template.messageList.events({
     var currentLocation = $(event.target).scrollTop();
     template.state.set('scrollLocation', currentLocation);
   },
-  'mousemove .message-list, mousemove .add-message, click .message-list, click .add-message, keypress .add-message input': function(event, template) {
+  'mousemove .message-list, mousemove .add-message, click .message-list, click .add-message, keypress .add-message input, focus .add-message input': function(event, template) {
     $('.new-message').delay(1000).animate({opacity: 0}, function() {
       $(this).removeClass('new-message');
     });

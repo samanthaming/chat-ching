@@ -5,8 +5,9 @@
   }
 
   &.active.item.select-buyer{
-    border-left: 3px solid $main-color;
+    border-left: 3px solid #9575cd;
     border-radius: 0px;
+    align-content: #f6f3fa;
   }
 
   &:hover .delete-buyer{

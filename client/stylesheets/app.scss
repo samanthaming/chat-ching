@@ -6,6 +6,10 @@ $bootstrap-screen-sm:768px;
 $bootstrap-screen-md:992px;
 $bootstrap-screen-lg:1200px;
 
+$dashboard-border-light: #eeeeee;
+$dashboard-border-dark: #c3c3c3;
+$dashboard-title-height: 60px;
+
 // Vendor
 @import "materialize.scss";
 @import "semantic-list";

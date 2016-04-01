@@ -40,8 +40,8 @@
 }
 
 .dashboard-nav, .sm-col-middle-title{
-  height:60px;
-  border-bottom:1px solid whiteSmoke;
+  height:$dashboard-title-height;
+  border-bottom:1px solid $dashboard-border-light;
   display: flex;
   align-items: center;
 }

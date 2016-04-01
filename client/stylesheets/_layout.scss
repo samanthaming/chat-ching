@@ -19,21 +19,23 @@ body{
 
 .sm-col-middle{
   width:100%;
-  border-left: 1px solid silver;
+  border-left: 1px solid $dashboard-border-dark;
 }
 
 .sm-col-middle-inner-wrap{
   display:flex;
-  padding-top: 20px;
+}
+
+.sm-col-middle-left, .sm-col-middle-right{
+  padding-top:20px;
 }
 
 .sm-col-middle-left{
-  padding:0 0 0 20px;
   width:60%;
-  border-right:1px solid whiteSmoke;
 }
 
 .sm-col-middle-right{
   width:40%;
   padding:0 10px;
+  border-left: 1px solid $dashboard-border-light;
 }

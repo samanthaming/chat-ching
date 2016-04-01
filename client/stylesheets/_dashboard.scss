@@ -23,7 +23,6 @@
   }
 }
 
-
 .sm-col-middle-title{
   padding:0 20px;
   div{
@@ -36,4 +35,14 @@
   border-bottom:1px solid whiteSmoke;
   display: flex;
   align-items: center;
+}
+
+.dashboard-loading{
+  .loading-icon{
+    font-size: 60px;
+    color: silver;
+    text-align: center;
+    display: block;
+    margin-top: 30vh;
+  }
 }

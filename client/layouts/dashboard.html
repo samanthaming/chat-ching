@@ -19,3 +19,31 @@
     </div>
   </div>
 </template>
+
+<template name="dashboardLoading">
+  <div class="sm-row dashboard-loading">
+    <div class="sm-col-left">
+      {{> dashboardNav}}
+      {{> channelList}}
+    </div>
+    <div class="sm-col-middle">
+      <div class="sm-col-middle-title clearfix">
+        {{> dashboardTitle}}
+      </div>
+      <div class="sm-col-middle-inner-wrap">
+        <div class="sm-col-middle-left clearfix">
+          <div class="message-wrap">
+            <!-- <i class="fa fa-spinner fa-spin loading-icon"></i> -->
+          </div>
+        </div>
+
+        <div class="sm-col-middle-right clearfix">
+          <div class="buyer-wrap">
+            {{> channelCard}}
+            {{> buyerList}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- sm-row -->
+</template>

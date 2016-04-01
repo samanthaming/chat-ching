@@ -20,6 +20,7 @@ Router.route('/channels', {
   name: 'channelIndex',
   template: 'channelIndex',
   layoutTemplate: 'dashboard',
+  // loadingTemplate:'dashboardLoading',
   onBeforeAction: function() {
     var currentUser = Meteor.userId();
     if (currentUser) {
@@ -29,7 +30,7 @@ Router.route('/channels', {
       this.render('login');
     }
   },
-  waitOn:function() {
+  subscriptions:function() {
     var channel = Session.get('currentChannel');
 
     if(!channel){
@@ -44,6 +45,13 @@ Router.route('/channels', {
     }
 
     Meteor.subscribe('channels');
+  },
+  action: function() {
+    if (this.ready()) {
+      this.render();
+    } else {
+      this.render('dashboardLoading');
+    }
   },
   onAfterAction: function() {
 

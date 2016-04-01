@@ -12,7 +12,6 @@
         <div class="sm-col-middle-left clearfix">
           <div class="message-wrap">
             {{#if $.Session.get 'currentChannelName'}}
-            {{> addMessage channelId=_id}}
             {{> messageList}}
             {{/if}}
           </div>

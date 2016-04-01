@@ -45,7 +45,6 @@ Template.messageList.onRendered(function() {
   var height = $('.message-list')[0].scrollHeight;
   var numMessage = $('.message-list .message-line').length;
   var template = this;
-  var divider = $('<p class="sm-divider new-message"><span>New Message</span></p>');
   // $('.message-list').scrollTop($('.message-list')[0].scrollHeight);
 
 
@@ -64,6 +63,7 @@ Template.messageList.onRendered(function() {
     numMessage = $('.message-list .message-line').length;
     var lastChild = $('.message-list li:last-child');
     var messageList = $('.message-list');
+    var divider = $('<p class="sm-divider new-message"><span>New Message</span></p>');
 
     if( (numMessage > template.state.get('numMessage') ) &&
         !lastChild.hasClass('my-message-line')
@@ -74,7 +74,8 @@ Template.messageList.onRendered(function() {
       if(messageList.find('.new-message').length === 0 &&
         (messageList.prop('scrollHeight') > messageList.height())
       ){
-        lastChild.before(divider);
+        lastChild.before(divider).fadeIn();
+
       }
     }
   },1000);
@@ -106,11 +107,12 @@ Template.messageList.events({
     var currentLocation = $(event.target).scrollTop();
     template.state.set('scrollLocation', currentLocation);
   },
-  'mousemove .message-list': function(event, template) {
-    $('.new-message').fadeOut();
+  'mousemove .message-list, mousemove .add-message, click .message-list, click .add-message, keypress .add-message input': function(event, template) {
+    $('.new-message').delay(1000).animate({opacity: 0}, function() {
+      $(this).removeClass('new-message');
+    });
     template.state.set('newMessage', false);
   }
-
 });
 
 /***************************************

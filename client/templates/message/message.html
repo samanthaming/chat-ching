@@ -1,4 +1,5 @@
 <template name="messageList">
+  {{> addMessage channelId=_id}}
   {{#if Template.subscriptionsReady}}
     <ul class="message-list clearfix">
       {{#each messages}}

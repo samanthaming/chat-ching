@@ -19,7 +19,16 @@
     &:hover{
       color: #bdbdbd;
     }
+  }
 
+  @media only screen and (max-width : $bootstrap-screen-md) {
+    .dashboard-signout, .dashboard-brand{
+      display: none;
+    }
+
+    .dashboard-create-channel{
+      margin: 0 auto;
+    }
   }
 }
 

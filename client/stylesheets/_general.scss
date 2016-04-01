@@ -1,0 +1,16 @@
+.divider{
+  background-color: white;
+
+  i{
+    color:#d1c4e9;
+  }
+}
+
+a{
+  &, &:focus{
+    color: $card-link-color;
+  }
+  &:hover{
+    color: $card-link-color-light;
+  }
+}

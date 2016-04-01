@@ -5,10 +5,16 @@ body{
   display:flex;
 }
 
-
 .sm-col-left{
-  width: 24%;
-  padding-left: 10px;
+  width: 15%;
+
+  @media only screen and (min-width : $bootstrap-screen-sm) {
+    width:20%;
+  }
+  @media only screen and (min-width : $bootstrap-screen-md) {
+    width: 24%;
+    padding-left: 10px;
+  }
 }
 
 .sm-col-middle{
@@ -20,8 +26,6 @@ body{
   display:flex;
   padding-top: 20px;
 }
-
-
 
 .sm-col-middle-left{
   padding:0 0 0 20px;

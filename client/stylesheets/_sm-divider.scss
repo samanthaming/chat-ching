@@ -1,0 +1,31 @@
+.sm-divider{
+
+  line-height: 0.5;
+  text-align: center;
+
+  span{
+    display: inline-block;
+    position: relative;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      height: 5px;
+      // border-bottom: 1px solid transparent;
+      border-top: 1px solid silver;
+      top: 2px;
+      width: 600px;
+    }
+
+    &:before{
+      right: 100%;
+      margin-right: 15px;
+    }
+
+    &:after {
+      left: 100%;
+      margin-left: 15px;
+    }
+  }
+}

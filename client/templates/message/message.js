@@ -8,6 +8,7 @@ Template.addMessage.events({
     var message = $('[name="message"]').val();
     var channel = Session.get('currentChannel');
     var owner = Channels.findOne(channel).creator;
+    var height = $('.message-list')[0].scrollHeight;
 
     if(message.length > 0){
       if (owner == Meteor.userId()) {
@@ -16,7 +17,7 @@ Template.addMessage.events({
         Meteor.call('addMessage', message, channel, owner);
         Meteor.call('addBuyer', channel);
       }
-      $(".message-list").animate({ scrollTop: $(document).height() }, "slow");
+      $(".message-list").animate({ scrollTop: height }, "slow");
     }
 
     $('[name="message"]').val("");
@@ -35,6 +36,52 @@ Template.addMessage.helpers({
 /***************************************
  * Message List
 ****************************************/
+Template.messageList.onCreated(function() {
+  this.state = new ReactiveDict();
+});
+
+Template.messageList.onRendered(function() {
+  console.log("rendere message list");
+  var height = $('.message-list')[0].scrollHeight;
+  var numMessage = $('.message-list .message-line').length;
+  var template = this;
+  var divider = $('<p class="sm-divider new-message"><span>New Message</span></p>');
+  // $('.message-list').scrollTop($('.message-list')[0].scrollHeight);
+
+
+  this.autorun(function () {
+    if (template.subscriptionsReady()) {
+      Tracker.afterFlush(function () {
+        $('.message-list').scrollTop(4220);
+      });
+    }
+  });
+
+  template.state.set('numMessage', numMessage);
+
+  template.run_every_sec = setInterval(function() {
+    height = $('.message-list')[0].scrollHeight;
+    numMessage = $('.message-list .message-line').length;
+    var lastChild = $('.message-list li:last-child');
+    var messageList = $('.message-list');
+
+    if( (numMessage > template.state.get('numMessage') ) &&
+        !lastChild.hasClass('my-message-line')
+    ){
+      template.state.set('numMessage', numMessage);
+      messageList.animate({ scrollTop: height }, "slow");
+
+      if(messageList.find('.new-message').length === 0 &&
+        (messageList.prop('scrollHeight') > messageList.height())
+      ){
+        lastChild.before(divider);
+      }
+    }
+  },1000);
+});
+Template.messageList.onDestroyed(function() {
+  clearInterval(this.run_every_sec);
+});
 Template.messageList.helpers({
   messages: function() {
     var channel = Session.get('currentChannel');
@@ -50,23 +97,22 @@ Template.messageList.helpers({
     return Messages.find({parties: {$all: [currentUser,recipient]}});
   }
 });
+Template.messageList.events({
+  'click .counter': function(event, template) {
+    template.state.set('counter', template.state.get('counter') + 1);
+    $('.message-list').scrollTop($(document).height());
+  },
+  'scroll .message-list':function(event,template) {
+    var currentLocation = $(event.target).scrollTop();
+    template.state.set('scrollLocation', currentLocation);
+  },
+  'mousemove .message-list': function(event, template) {
+    $('.new-message').fadeOut();
+    template.state.set('newMessage', false);
+  }
 
-Template.messageList.onCreated(function() {
-  var channel = Session.get('currentChannel');
-  // this.subscribe('channelMessages', channel);
 });
 
-Template.messageList.onRendered(function() {
-  // var template = this;
-  //
-  // this.autorun(function () {
-  //   if (template.subscriptionsReady()) {
-  //     Tracker.afterFlush(function () {
-  //       $('.message-list').scrollTop($(document).height());
-  //     });
-  //   }
-  // });
-});
 /***************************************
  * Message Item
 ****************************************/

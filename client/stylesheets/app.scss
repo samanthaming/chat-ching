@@ -15,6 +15,7 @@ $bootstrap-screen-md:992px;
 $bootstrap-screen-lg:1200px;
 
 @import "materialize.scss";
+@import "sm-divider";
 @import "nav";
 @import "authentication";
 @import "semantic-list";

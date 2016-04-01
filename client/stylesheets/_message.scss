@@ -12,7 +12,7 @@
 }
 
 .message-line{
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 
   .inner-message-line{
     float:left;
@@ -53,7 +53,39 @@
 .message-wrap{
   height:85vh;
   position:relative;
+
+
+  // .more-message{
+  //   background-color: #EE6E73;
+  //   border-radius: 25px;
+  //   text-align: center;
+  //   position: absolute;
+  //   cursor: pointer;
+  //   margin-right: auto;
+  //   left: 0;
+  //   right: 0;
+  //   margin-left: auto;
+  //   bottom: 12%;
+  //   width: 50%;
+  //   padding: 2px 0;
+  //   display:none;
+  // }
+
 }
+
+.new-message.sm-divider{
+  margin-bottom: 25px;
+  span{
+    color: #ec407a;
+    &:before,
+    &:after {
+      border-top: 1px solid #F6A2AD;
+      width:120%;
+    }
+  }
+}
+
+
 
 .add-message{
   position:absolute;

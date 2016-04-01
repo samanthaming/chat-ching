@@ -1,6 +1,5 @@
 .message-wrap{
-  // 80px = title (60px) + padding (20px)
-  height: calc(100vh - 80px);
+  height: $layout-content-height;
   position:relative;
 
   // .more-message{
@@ -79,7 +78,20 @@
     &:before,
     &:after {
       border-top: 1px solid #F6A2AD;
-      width:120%;
+        width:100%;
+
+      @media only screen and (min-width : $bootstrap-screen-xs) {
+        width:180%;
+      }
+      @media only screen and (min-width : $bootstrap-screen-sm) {
+        width:300%;
+      }
+      @media only screen and (min-width : $bootstrap-screen-md) {
+        width:200%;
+      }
+      @media only screen and (min-width : $bootstrap-screen-lg) {
+        width:120%;
+      }
     }
   }
 }

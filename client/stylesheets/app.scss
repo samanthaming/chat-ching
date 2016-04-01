@@ -2,6 +2,7 @@ $main-color:#448AFF;
 $button-color: $main-color;
 $input-focus-color: $main-color;
 
+$bootstrap-screen-xs:480px;
 $bootstrap-screen-sm:768px;
 $bootstrap-screen-md:992px;
 $bootstrap-screen-lg:1200px;
@@ -9,6 +10,7 @@ $bootstrap-screen-lg:1200px;
 $dashboard-border-light: #eeeeee;
 $dashboard-border-dark: #c3c3c3;
 $dashboard-title-height: 60px;
+$layout-content-height: calc(100vh - 80px); // 80px = title (60px) + padding (20px)
 
 // Vendor
 @import "materialize.scss";

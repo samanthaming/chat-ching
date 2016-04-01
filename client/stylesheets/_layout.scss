@@ -31,11 +31,20 @@ body{
 }
 
 .sm-col-middle-left{
-  width:60%;
+  width:100%;
+
+  @media only screen and (min-width : $bootstrap-screen-md) {
+    width:60%;
+  }
 }
 
 .sm-col-middle-right{
-  width:40%;
-  padding:0 10px;
+  width:100%;
   border-left: 1px solid $dashboard-border-light;
+  @media only screen and (max-width : $bootstrap-screen-md) {
+    display:none;
+  }
+  @media only screen and (min-width : $bootstrap-screen-md) {
+    width:40%;
+  }
 }

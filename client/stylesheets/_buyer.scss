@@ -1,3 +1,8 @@
+.buyer-wrap{
+  height: $layout-content-height;
+  padding: 0 15px;
+}
+
 .buyer-item{
 
   .image{
@@ -7,7 +12,7 @@
   &.active.item.select-buyer{
     border-left: 3px solid #9575cd;
     border-radius: 0px;
-    align-content: #f6f3fa;
+    background: #f4f0f9 !important;
   }
 
   &:hover .delete-buyer{
@@ -18,12 +23,8 @@
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
   }
-
 }
 
-.buyer-wrap{
-  height:80vh;
-}
 .buyer-list{
   overflow: auto;
   height:49%;

@@ -1,5 +1,5 @@
-Template.dashboardTitle.helpers({
-  dashboardTitle: function() {
+Template.dashboardHeader.helpers({
+  dashboardHeaderTitle: function() {
     var channelOwner = Session.get('currentChannelCreator');
     var title = "";
 

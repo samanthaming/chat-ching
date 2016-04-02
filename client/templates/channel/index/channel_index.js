@@ -19,8 +19,30 @@ Template.channelIndex.onCreated(function() {
 });
 
 Template.channelIndex.onRendered(function() {
-  var height = $('.message-list')[0].scrollHeight;
+  var messageList = $('.message-list');
+
+  console.log("index rendered");
+
+  $("[data-toggle='tooltip']").click(function(){
+      var $this = $(this);
+
+      $this.tooltip("show");
+
+      setTimeout(function() {
+        $this.tooltip("destroy");
+      },1000);
+  });
+
+
+
+  if(!messageList.length){
+    return;
+  }
+
+  var height = messageList[0].scrollHeight;
   var template = this;
+
+
 
   this.autorun(function () {
     if (template.subscriptionsReady()) {

@@ -33,7 +33,9 @@
         <div class="form-group">
           <div class="input-group">
             <input type="text" class="form-control copy-text" value="{{channelLink}}" readonly="readonly">
-            <button class="input-group-addon copy-link" type="button" data-clipboard-text={{channelLink}}><i class="fa fa-scissors"></i></button>
+            <button class="input-group-addon copy-link" type="button" data-clipboard-text={{channelLink}} data-toggle="tooltip" data-title="Copied!" data-trigger="click">
+              <i class="fa fa-scissors"></i>
+            </button>
           </div>
         </div>
       </form>

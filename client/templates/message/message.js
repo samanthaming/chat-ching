@@ -60,8 +60,8 @@ Template.messageList.onRendered(function() {
       template.state.set('numMessage', numMessage);
       messageList.animate({ scrollTop: height }, "slow");
 
-      if(messageList.find('.new-message').length === 0 &&
-        (messageList.prop('scrollHeight') > messageList.height())
+      if(messageList.find('.new-message').length === 0 // &&
+        // (messageList.prop('scrollHeight') > messageList.height())
       ){
         lastChild.before(divider).fadeIn();
       }

@@ -10,7 +10,7 @@
   color:#2962ff;
   cursor: pointer;
 
-  &:hover{
+  &:hover, &.active{
     color: #64B5F6;
   }
 }
@@ -45,10 +45,6 @@
   .dashboard-header-title{
     font-size: 28px;
     flex-grow: 1;
-
-  }
-
-  .dashboard-header-info{
 
   }
 }

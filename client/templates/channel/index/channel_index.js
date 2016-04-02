@@ -33,7 +33,7 @@ Template.channelIndex.onRendered(function() {
 
 Template.channelIndex.events({
   'click .dashboard-header-info': function(event) {
-    // $('.sm-col-middle-right').toggle();
-    // $('.sm-col-middle-left').css('width', '100%');
+    $('.sm-col-middle-right').toggle();
+    $(event.currentTarget).toggleClass('active');
   }
 });

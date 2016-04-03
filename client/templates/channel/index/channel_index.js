@@ -33,6 +33,12 @@ Template.channelIndex.onRendered(function() {
 
   console.log("index rendered");
 
+  // $(".add-message").on('keyup change input[name="message"]',function(e) {
+  //   var source = $('input[name="message"]').val();
+  //   var preview = emojione.shortnameToImage(source);
+  //   console.log(preview);
+  //   $('input[name="message"]').val(preview);
+  // });
 
   if(!messageList.length){
     return;

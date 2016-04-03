@@ -7,8 +7,15 @@ Template.addMessage.events({
 
     var message = $('[name="message"]').val();
     var channel = Session.get('currentChannel');
+    var findChannel = Channels.findOne(channel);
+
+    if(!findChannel){
+      return alert("This listing doesn't exist anymore.");
+    }
+
     var owner = Channels.findOne(channel).creator;
     var height = $('.message-list')[0].scrollHeight;
+
 
     if(message.length > 0){
       if (owner == Meteor.userId()) {

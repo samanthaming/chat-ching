@@ -26,15 +26,14 @@
           <div class="craigslist-result-image"><img src="{{craigslist.image}}" alt=""></div>
         </div>
 
-          {{#if $.Session.get 'craigslistId' }}
-          {{else}}
+          {{#unless $.Session.get 'craigslistId' }}
           <div class="generate-link-wrap">
             <button class="btn btn-default btn-block generate-link">Generate Link</button>
           </div>
-          {{/if}}
+          {{/unless}}
         {{/if}}
 
-        <form class="form-inline generated-link-wrap {{#if $.Session.get 'craigslistId' }}{{else}}hidden{{/if}}">
+        <form class="form-inline generated-link-wrap {{#unless $.Session.get 'craigslistId' }}hidden{{/unless}}">
           <div class="form-group">
             <div class="input-group">
               <input type="text" class="form-control copy-text" value="{{generatedLink}}" readonly="readonly">

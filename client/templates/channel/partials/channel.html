@@ -13,13 +13,25 @@
       <div class="header">{{name}}</div>
     </div>
   </div>
-  <!-- <a href="#" class="delete-channel text-muted">Delete</a> -->
 </template>
 
 <template name="channelCard">
   {{#if $.Session.get 'currentChannelName'}}
   <div class="card">
-    <div class="card-title text-center">{{$.Session.get 'currentChannelName'}}</div>
+    <div class="card-title">
+      <div class="card-title-title {{#unless isOwner}}text-center{{/unless}}">{{$.Session.get 'currentChannelName'}}</div>
+
+      {{#if isOwner}}
+        <div class="dropdown">
+          <div class="dropdown-toggle" id="delete-channel-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <i class="fa fa-cog"></i>
+          </div>
+          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="delete-channel-dropdown">
+            <li><a href="#" id="delete-channel">Delete</a></li>
+          </ul>
+        </div>
+      {{/if}}
+    </div>
 
     <p class="truncate text-center"><a class="card-link" href="{{$.Session.get 'currentChannelUrl'}}">{{$.Session.get 'currentChannelUrl'}}</a></p>
 

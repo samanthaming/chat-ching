@@ -42,17 +42,6 @@ Template.channelItem.events({
     if(Router.current().params.query.id){
         Router.go('channelIndex');
     }
-  },
-  'click .delete-channel': function(event) {
-    event.preventDefault();
-    var channel = this._id;
-    if (confirm("Delete Channel: " + this.name + "? (This can't be reversed!)")) {
-      Session.set('currentChannel', null);
-      Session.set('currentChannelName', null);
-      Session.set('currentChannelCreator', null);
-      Session.set('currentChannelCreatorName', null);
-      Meteor.call('deleteChannel', channel);
-    }
   }
 });
 /***************************************
@@ -78,5 +67,20 @@ Template.channelCard.events({
     event.preventDefault();
     var link = $(event.target).attr("href");
     window.open(link, '_blank');
+  },
+  'click #delete-channel': function(event) {
+    event.preventDefault();
+    var channel = Session.get('currentChannel');
+    if (confirm("Are you sure you want to delete? " + Session.get('currentChannelName') + ". (This can't be reversed!)")) {
+      Session.set('currentChannel', null);
+      Session.set('currentChannelName', null);
+      Session.set('currentChannelUrl', null);
+      Session.set('currentChannelImage', null);
+      Session.set('currentChannelCreator', null);
+      Session.set('currentChannelCreatorName', null);
+      Session.set('selectBuyer', null);
+      Session.set('selectBuyerName', null);
+      Meteor.call('deleteChannel', channel);
+    }
   }
 });

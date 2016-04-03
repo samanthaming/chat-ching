@@ -7,7 +7,7 @@ Meteor.methods({
     check(recipient, String);
 
     if(!Channels.findOne(channel)){
-      throw new Meteor.Error('invalid-channel', "Invalid Channel");
+      throw new Meteor.Error('invalid-channel', "This Listing doesn't exist");
     }
 
     // Doesn't work

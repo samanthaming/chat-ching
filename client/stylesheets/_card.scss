@@ -1,5 +1,4 @@
 .card{
-  height:50%;
 
   .form-inline{
     input[type="text"]{
@@ -14,16 +13,31 @@
   .truncate{
     color: $card-link-color;
   }
+
 }
 
 .card-title{
   font-size: 24px;
   margin-top: -10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+
+  .card-title-title{
+    flex-grow: 1;
+  }
+
+  #delete-channel-dropdown{
+    font-size: 18px;
+    font-weight: normal;
+    color:silver;
+    cursor: pointer;
+  }
 }
 
 .card-image{
   width:300px;
-  height:65%;
+  height:300px;
   margin:0 auto;
   img{
     width:100%;

@@ -26,6 +26,10 @@
   }
   .item.select-channel{
     border-radius: 0px;
+    &:first-child{
+      margin-top: 1px;
+      padding-top: 8px;
+    }
     @media only screen and (max-width : $bootstrap-screen-md) {
       text-align: center;
     }

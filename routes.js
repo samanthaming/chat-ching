@@ -1,19 +1,27 @@
-Router.route('/',{
-  name: 'home',
-  template:'home',
-  layoutTemplate: 'main'
-});
-
 Router.route('/register',{
   name: 'register',
   template: 'register',
-  layoutTemplate: 'main'
+  layoutTemplate: 'main',
+  onBeforeAction: function () {
+    if (!Meteor.user() && !Meteor.loggingIn()) {
+      this.next();
+    } else {
+      this.redirect('/channels');
+    }
+  }
 });
 
-Router.route('/login', {
+Router.route('/', {
   name: 'login',
   template: 'login',
-  layoutTemplate: 'main'
+  layoutTemplate: 'main',
+  onBeforeAction: function () {
+    if (!Meteor.user() && !Meteor.loggingIn()) {
+      this.next();
+    } else {
+      this.redirect('/channels');
+    }
+  }
 });
 
 Router.route('/channels', {
@@ -22,8 +30,7 @@ Router.route('/channels', {
   layoutTemplate: 'dashboard',
   // loadingTemplate:'dashboardLoading',
   onBeforeAction: function() {
-    var currentUser = Meteor.userId();
-    if (currentUser) {
+    if (Meteor.userId()) {
       this.next();
     } else {
       this.layout('main');

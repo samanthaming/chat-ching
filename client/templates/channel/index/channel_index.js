@@ -21,8 +21,6 @@ Template.channelIndex.onCreated(function() {
 Template.channelIndex.onRendered(function() {
   var messageList = $('.message-list');
 
-  console.log("index rendered");
-
   $("[data-toggle='tooltip']").click(function(){
       var $this = $(this);
 
@@ -33,6 +31,7 @@ Template.channelIndex.onRendered(function() {
       },1000);
   });
 
+  console.log("index rendered");
 
 
   if(!messageList.length){
@@ -41,8 +40,6 @@ Template.channelIndex.onRendered(function() {
 
   var height = messageList[0].scrollHeight;
   var template = this;
-
-
 
   this.autorun(function () {
     if (template.subscriptionsReady()) {

@@ -4,7 +4,7 @@ Template.channelCreate.helpers({
   },
   generatedLink: function() {
     var link = Meteor.absoluteUrl();
-    link += "channels/123";
+    link += "channels/";
     link += Session.get('craigslistId');
     return link;
   }
@@ -25,7 +25,9 @@ Template.channelCreate.events({
   },
   'click .cancel-create-channel':function(event) {
     event.preventDefault();
+    $('[name="list-link"]').val("");
     Session.clear("craigslist");
+    Session.clear("craigslistId");
   },
   'click .craigslist-url':function(event) {
     event.preventDefault();

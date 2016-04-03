@@ -34,18 +34,17 @@
           {{/if}}
         {{/if}}
 
-        {{#if $.Session.get 'craigslistId' }}
-          <form class="form-inline generated-link-wrap">
-            <div class="form-group">
-              <div class="input-group">
-                <input type="text" class="form-control copy-text" value="{{generatedLink}}" readonly="readonly">
-                <button class="input-group-addon copy-link" type="button" data-clipboard-text={{generatedLink}} data-toggle="tooltip" data-title="Copied!" data-trigger="click">
-                  <i class="fa fa-scissors"></i>
-                </button>
-              </div>
+        <form class="form-inline generated-link-wrap {{#if $.Session.get 'craigslistId' }}{{else}}hidden{{/if}}">
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" class="form-control copy-text" value="{{generatedLink}}" readonly="readonly">
+              <button class="input-group-addon copy-link" type="button" data-clipboard-text={{generatedLink}} data-toggle="tooltip" data-title="Copied!" data-trigger="click">
+                <i class="fa fa-scissors"></i>
+              </button>
             </div>
-          </form>
-        {{/if}}
+          </div>
+        </form>
+
       </div><!-- end .modal-body -->
     </div>
   </div>

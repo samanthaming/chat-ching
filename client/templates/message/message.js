@@ -41,6 +41,7 @@ Template.messageList.onCreated(function() {
 });
 
 Template.messageList.onRendered(function() {
+  console.log('message list rendered');
   var height = $('.message-list')[0].scrollHeight;
   var numMessage = $('.message-list .message-line').length;
   var template = this;
@@ -70,6 +71,7 @@ Template.messageList.onRendered(function() {
 });
 
 Template.messageList.onDestroyed(function() {
+  console.log('message list destroyed');
   clearInterval(this.run_every_sec);
 });
 

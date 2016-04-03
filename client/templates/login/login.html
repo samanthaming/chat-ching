@@ -1,7 +1,6 @@
 <template name="login">
-  <h1 class="page-header text-center">Login</h1>
-
-  <form class="login">
+  {{> pageHeader}}
+  <form class="login z-depth-2">
     <div class="form-group">
       <input type="email" class="form-control" name="email" placeholder="Email">
     </div>
@@ -11,4 +10,6 @@
     </div>
     <button type="submit" class="btn btn-default btn-block">Submit</button>
   </form>
+
+  <p class="form-link">{{#linkTo route="register"}}Don't have an account?&nbsp;&nbsp;Sign up{{/linkTo}}</p>
 </template>

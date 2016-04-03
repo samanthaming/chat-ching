@@ -43,7 +43,6 @@ Router.route('/channels', {
         Meteor.subscribe('channelMessages', channel)
       ];
     }
-
     Meteor.subscribe('channels');
   },
   action: function() {
@@ -52,8 +51,5 @@ Router.route('/channels', {
     } else {
       this.render('dashboardLoading');
     }
-  },
-  onAfterAction: function() {
-
   }
 });

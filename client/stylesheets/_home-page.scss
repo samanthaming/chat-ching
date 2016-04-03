@@ -1,0 +1,68 @@
+$logo-color: #ffffff;
+$logo-secondary-color:#c6ff00;
+
+.sm-home-container{
+  background-color: #3399cc;
+  height:100vh;
+  display:flex;
+
+  & > div{
+    margin-top: 20%;
+    @media only screen and (min-width : $bootstrap-screen-md) {
+      margin-top: 12%;
+    }
+  }
+
+  form{
+    padding: 20px;
+    background-color: white;
+    border-radius: 2px;
+
+    button[type="submit"]{
+      margin-top: 30px;
+    }
+  }
+
+  .form-link{
+    padding-top: 10px;
+    margin-top:30px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 15px;
+    text-align: center;
+    font-weight: normal;
+
+    a{
+      color:#e0e0e0;
+      font-size: 16px;
+      margin-left: -10px;
+    }
+  }
+}
+.site-page-header{
+  margin-top: 0;
+  border-bottom: none;
+
+  @media only screen and (max-width : $bootstrap-screen-sm) {
+    font-size: 3.5rem;
+  }
+
+  .fa-comment-o{
+    color:$logo-color;
+  }
+  .fa-dollar{
+    color: $logo-secondary-color;
+  }xz
+  .site-logo{
+    color:$logo-color;
+  }
+  .site-title{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 900;
+    font-stretch: condensed;
+    text-transform: uppercase;
+    color: $logo-color;
+    span{
+      color:$logo-secondary-color;
+    }
+  }
+}

@@ -1,21 +1,19 @@
 <template name="register">
+  {{> pageHeader}}
+  <form class="register">
+    <div class="form-group">
+      <input type="text" class="form-control" name="first-name" placeholder="First name">
+    </div>
 
-  <div class="register-wrap">
-    <h1 class="page-header text-center">PP Chat</h1>
+    <div class="form-group">
+      <input type="email" class="form-control" name="email" placeholder="Email">
+    </div>
 
-    <form class="register">
-      <div class="form-group">
-        <input type="text" class="form-control" name="first-name" placeholder="First name">
-      </div>
+    <div class="form-group">
+      <input type="password" class="form-control" name="password" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-default btn-block text-center">Submit</button>
+  </form>
 
-      <div class="form-group">
-        <input type="email" class="form-control" name="email" placeholder="Email">
-      </div>
-
-      <div class="form-group">
-        <input type="password" class="form-control" name="password" placeholder="Password">
-      </div>
-      <button type="submit" class="btn btn-default btn-block text-center">Submit</button>
-    </form>
-  </div>
+  <p class="form-link">{{#linkTo route="login"}}Already have an account?&nbsp;&nbsp;Log in{{/linkTo}}</p>
 </template>

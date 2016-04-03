@@ -19,6 +19,7 @@ $layout-content-height: calc(100vh - 80px); // 80px = title (60px) + padding (20
 
 // General
 @import "sm-divider";
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700);
 
 // Templates
 @import "layout";
@@ -30,4 +31,5 @@ $layout-content-height: calc(100vh - 80px); // 80px = title (60px) + padding (20
 @import "buyer";
 @import "dashboard";
 @import "modal-create-channel";
+@import "home-page";
 @import "general";

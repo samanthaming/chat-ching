@@ -48,6 +48,7 @@ Template.channelIndex.onRendered(function() {
   var template = this;
 
   this.autorun(function () {
+    emojione.ascii = true;
     if (template.subscriptionsReady()) {
       Tracker.afterFlush(function () {
         $('.message-list').scrollTop(height);

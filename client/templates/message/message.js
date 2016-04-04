@@ -48,7 +48,6 @@ Template.messageList.onCreated(function() {
 });
 
 Template.messageList.onRendered(function() {
-  console.log('message list rendered');
   var height = $('.message-list')[0].scrollHeight;
   var numMessage = $('.message-list .message-line').length;
   var template = this;

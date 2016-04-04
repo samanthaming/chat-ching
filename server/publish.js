@@ -1,5 +1,22 @@
-Meteor.publish('channels', function() {
-  return Channels.find();
+Meteor.publish('subscribedChannels', function() {
+  return Channels.find({
+    $or:
+    [
+      {creator: this.userId},
+      {buyers: {$elemMatch: {buyer:this.userId}}}
+    ]
+  });
+});
+
+Meteor.publish('subscribeChannels', function(channel) {
+  return Channels.find({
+    $or:
+    [
+      {_id: channel},
+      {creator: this.userId},
+      {buyers: {$elemMatch: {buyer:this.userId}}}
+    ]
+  });
 });
 
 Meteor.publish('singleChannel', function(channel) {

@@ -46,11 +46,11 @@ Router.route('/channels', {
 
     if(channel){
       return [
-        Meteor.subscribe('channels'),
+        Meteor.subscribe('subscribeChannels', channel),
         Meteor.subscribe('channelMessages', channel)
       ];
     }
-    Meteor.subscribe('channels');
+    Meteor.subscribe('subscribedChannels');
   },
   action: function() {
     if (this.ready()) {

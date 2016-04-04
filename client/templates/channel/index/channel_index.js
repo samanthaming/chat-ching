@@ -6,6 +6,7 @@ Template.channelIndex.onCreated(function() {
   }
 
   var channel = Channels.findOne({_id: params});
+  Meteor.call('addBuyer', params);
 
   if(!channel){
     return false;
@@ -19,6 +20,7 @@ Template.channelIndex.onCreated(function() {
 });
 
 Template.channelIndex.onRendered(function() {
+  console.log("index rendered");
   var messageList = $('.message-list');
 
   $("[data-toggle='tooltip']").click(function(){
@@ -31,7 +33,6 @@ Template.channelIndex.onRendered(function() {
       },1000);
   });
 
-  console.log("index rendered");
 
   // $(".add-message").on('keyup change input[name="message"]',function(e) {
   //   var source = $('input[name="message"]').val();

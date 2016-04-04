@@ -1,5 +1,5 @@
 .card{
-
+  height: 55%;
   .form-inline{
     input[type="text"]{
       background-color: white;
@@ -37,7 +37,8 @@
 
 .card-image{
   width:300px;
-  height:300px;
+  // height:300px;
+  height:60%;
   margin:0 auto;
   img{
     width:100%;

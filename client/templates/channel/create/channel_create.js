@@ -4,7 +4,7 @@ Template.channelCreate.helpers({
   },
   generatedLink: function() {
     var link = Meteor.absoluteUrl();
-    link += "channels/";
+    link += "channels?id=";
     link += Session.get('craigslistId');
     return link;
   }

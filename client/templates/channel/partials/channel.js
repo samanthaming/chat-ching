@@ -82,5 +82,17 @@ Template.channelCard.events({
       Session.set('selectBuyerName', null);
       Meteor.call('deleteChannel', channel);
     }
+  },
+  'click #leave-channel': function(event) {
+    event.preventDefault();
+    var currentChannel = Session.get('currentChannel');
+    var buyer = Meteor.userId();
+    Meteor.call('deleteBuyer', currentChannel, buyer, function(err, data) {
+      if(err){
+        alert(err.reason);
+      }else{
+        document.location.reload(true);
+      }
+    });
   }
 });

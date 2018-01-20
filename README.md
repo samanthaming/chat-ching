@@ -24,11 +24,11 @@ You can now include this link on your Craigslist posting to start your own perso
 ![Chat Ching Messenger](Chat-Ching-Messenging.png)
 
 
-#### 5. Once you're done, you can delete the channel.
+#### 5. Once you're done, you can delete the channel
 
 ![Chat Ching Delete Channel](Chat-Ching-Delete-Channel.png)
 
-## How to Deploy on your own local machine
+## Installation
 
 ```ruby
 $ git clone https://github.com/samanthaming/chat-ching.git

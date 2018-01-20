@@ -41,4 +41,4 @@ $ meteor
 - Animation using [Animate.css](https://daneden.github.io/animate.css/) :rainbow:
 - Design using [Materialize](http://materializecss.com/) :candy:
 - Data Scraping using [Meteor-scrape](https://github.com/Anonyfox/meteor-scrape) :mag:
-- Emoji support using [EmojiOne](https://www.emojione.com/) :simple_smile:
+- Emoji support using [EmojiOne](https://www.emojione.com/) :smile:
